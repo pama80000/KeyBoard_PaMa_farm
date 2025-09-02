@@ -1,8 +1,23 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>  // 
 
 / {
+
+	behaviors {
+        // 上下の動きをスクロールに変換するビヘイビアを "ym_scroll" という名前で定義
+        ym_scroll: pms_scroll {
+            compatible = "zmk,behavior-pointing-mouse-sensor-scroll";
+            label = "YM_SCROLL";
+            #binding-cells = <0>;
+            // もし上下のスクロール方向を逆にしたい場合は、次の行のコメントを外す
+            // invert-y;
+            // もし左右のスクロールを無効にしたい場合は、次の行のコメントを外す
+            // ignore-x;
+        };
+    };
+    
     keymap {
         compatible = "zmk,keymap";
 
@@ -49,5 +64,17 @@
 				&none &none &none &none
             >;
         };
+        
+        layer_4 {
+            bindings =<
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
+				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
+				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
+				&none &none &none &none &none &none &none &none &none
+				&none &none &none &none
+            >;
+        };
+
     };
 };

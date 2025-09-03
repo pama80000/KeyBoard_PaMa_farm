@@ -1,5 +1,86 @@
 
+// #include <behaviors.dtsi>
+// #include <dt-bindings/zmk/keys.h>
+
+// #include "../../../config/keymap.keymap"
+
+// 正しいファイル ykey_for_farm.keymap の中身をこれだけにします
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
-#include "../../../config/keymap.keymap"
+/ {
+    behaviors {
+        // 上下の動きをスクロールに変換するビヘイビアを "ym_scroll" という名前で定義
+        ym_scroll {
+            compatible = "zmk,behavior-pointing-mouse-sensor-scroll";
+            label = "YM_SCROLL";
+            #sensor-binding-cells = <0>;
+            // もし上下のスクロール方向を逆にしたい場合は、次の行のコメントを外す
+            // invert-y;
+            // もし左右のスクロールを無効にしたい場合は、次の行のコメントを外す
+            ignore-x;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        layer_0 {
+            bindings = <
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
+            >;
+        };
+
+        layer_1 {
+            bindings = <
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
+            >;
+        };
+
+        layer_2 {
+            bindings = <
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
+            >;
+        };
+
+        layer_4 {
+            bindings = <
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
+            >;
+            sensor-bindings = <&ym_scroll>; // このレイヤーでは上下の動きがスクロールになる
+        };
+    };
+};

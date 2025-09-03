@@ -7,7 +7,7 @@
 
 	behaviors {
         // 上下の動きをスクロールに変換するビヘイビアを "ym_scroll" という名前で定義
-        ym_scroll: pms_scroll {
+        ym_scroll {
             compatible = "zmk,behavior-pointing-mouse-sensor-scroll";
             label = "YM_SCROLL";
             #sensor-binding-cells = <0>; // ★sensor- を追加して修正

@@ -1,11 +1,9 @@
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>  // 
+#include <dt-bindings/zmk/pointing.h>
 
 / {
-
-	behaviors {
+    behaviors {
         // 上下の動きをスクロールに変換するビヘイビアを "ym_scroll" という名前で定義
         ym_scroll {
             compatible = "zmk,behavior-pointing-mouse-sensor-scroll";
@@ -17,65 +15,64 @@
             ignore-x;
         };
     };
-    
+
     keymap {
         compatible = "zmk,keymap";
 
         layer_0 {
-            bindings =<
+            bindings = <
                 &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none
-				&none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
             >;
         };
 
         layer_1 {
-            bindings =<
+            bindings = <
                 &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none
-				&none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
             >;
         };
 
         layer_2 {
-            bindings =<
+            bindings = <
                 &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none
-				&none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
             >;
         };
 
         layer_3 {
-            bindings =<
+            bindings = <
                 &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none
-				&none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
             >;
         };
         
         layer_4 {
-            bindings =<
+            bindings = <
                 &none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none &none &none &none &none &none
-				&none &none &none &none &none &none &none &none &none
-				&none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none
+                &none &none &none &none
             >;
             sensor-bindings = <&ym_scroll>; // このレイヤーでは上下の動きがスクロールになる
         };
-
     };
 };

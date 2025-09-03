@@ -10,7 +10,7 @@
         ym_scroll {
             compatible = "zmk,behavior-pointing-mouse-sensor-scroll";
             label = "YM_SCROLL";
-            #sensor-binding-cells = <0>; // ★sensor- を追加して修正
+            #sensor-binding-cells = <0>;
             // もし上下のスクロール方向を逆にしたい場合は、次の行のコメントを外す
             // invert-y;
             // もし左右のスクロールを無効にしたい場合は、次の行のコメントを外す

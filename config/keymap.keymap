@@ -74,6 +74,7 @@
 				&none &none &none &none &none &none &none &none &none
 				&none &none &none &none
             >;
+            sensor-bindings = <&ym_scroll>; // このレイヤーでは上下の動きがスクロールになる
         };
 
     };

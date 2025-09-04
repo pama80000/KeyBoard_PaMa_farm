@@ -47,7 +47,7 @@ jobs:
 
       - name: Build firmware
         run: |
-          west build -s zmk/app -d "build/${{ matrix.shield }}" -b akdk_bt1 -- -DSHIELD=${{ matrix.shield }} -DZMK_EXTRA_MODULES="${{ github.workspace }}/config"
+          west build -s zmk/app -d "build/${{ matrix.shield }}" -b akdk_bt1 -- -DSHIELD=${{ matrix.shield }}
 
       - name: Archive firmware
         uses: actions/upload-artifact@v4

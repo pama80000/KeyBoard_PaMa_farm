@@ -1,6 +1,57 @@
-name: Build ZMK firmware
-on: [push, pull_request, workflow_dispatch]
+name: 'Build Firmware'
+
+on: [push, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:3.5
+    strategy:
+      fail-fast: false
+      matrix:
+        shield:
+          - ykey_for_farm_left
+          - ykey_for_farm_right
+    steps:
+      - name: Checkout ZMK Firmware
+        uses: actions/checkout@v4
+        with:
+          repository: zmkfirmware/zmk
+          ref: main
+
+      - name: Checkout Keyboard Repo
+        uses: actions/checkout@v4
+        with:
+          path: config
+
+      - name: Cache west modules
+        id: west-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            bootloader
+            modules
+            tools
+            zephyr
+          key: west-cache-${{ matrix.shield }}-${{ hashFiles('config/west.yml') }}
+
+      - name: Initialize west
+        run: west init -l config
+
+      - name: Update west
+        run: west update
+
+      - name: Export Zephyr CMake package
+        run: west zephyr-export
+
+      - name: Build firmware
+        run: |
+          west build -s zmk/app -d "build/${{ matrix.shield }}" -b akdk_bt1 -- -DSHIELD=${{ matrix.shield }} -DZMK_EXTRA_MODULES="${{ github.workspace }}/config"
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ matrix.shield }}
+          path: |
+            build/${{ matrix.shield }}/zephyr/zmk.uf2
